@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Notes:
+
+- React Context Docs - https://reactjs.org/docs/context.html
+
+* Tutorial (Section 23) - https://www.udemy.com/react-redux/
+
 ## Available Scripts
 
 In the project directory, you can run:
