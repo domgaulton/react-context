@@ -11,7 +11,7 @@ class ChildOne extends React.Component {
     // console.log(ContextConsumer);
     return (
       <div>
-        <p>{this.props.something}</p>
+        <p>Something is... {this.props.something ? "true" : "false"}</p>
         <p>{this.props.name}</p>
       </div>
     );
@@ -21,7 +21,9 @@ class ChildOne extends React.Component {
 // export default ChildOne;
 
 const ChildOneUpdate = props => (
-  <ContextConsumer>{({ name }) => <ChildOne name={name} />}</ContextConsumer>
+  <ContextConsumer>
+    {({ name }) => <ChildOne {...props} name={name} />}
+  </ContextConsumer>
 );
 
 export default ChildOneUpdate;
