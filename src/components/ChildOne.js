@@ -8,7 +8,6 @@ class ChildOne extends React.Component {
   }
 
   render() {
-    // console.log(ContextConsumer);
     return (
       <div>
         <p>Something is... {this.props.something ? "true" : "false"}</p>
@@ -22,7 +21,13 @@ class ChildOne extends React.Component {
 
 const ChildOneUpdate = props => (
   <ContextConsumer>
-    {({ name }) => <ChildOne {...props} name={name} />}
+    {({ name }) => (
+      <ChildOne
+        // remember to spread the existing props otherwise you lose any new ones e.g. 'something' that don't come from the provider
+        {...props}
+        name={name}
+      />
+    )}
   </ContextConsumer>
 );
 

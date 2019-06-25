@@ -1,9 +1,5 @@
 import React from "react";
 
-const Context = React.createContext();
-// Create an exportable consumer that can wrapped around components
-export const ContextConsumer = Context.Consumer;
-
 class ContextProvider extends React.Component {
   constructor(props) {
     super(props);
@@ -25,3 +21,7 @@ class ContextProvider extends React.Component {
 }
 
 export default ContextProvider;
+
+// Create an exportable consumer function that can wrapped around components
+const Context = React.createContext();
+export const ContextConsumer = Context.Consumer;
