@@ -6,7 +6,6 @@ class Parent extends React.Component {
     return (
       <React.Fragment>
         <ChildOne something={true} />
-        <ChildOne something={!true} />
       </React.Fragment>
     );
   }

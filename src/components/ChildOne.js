@@ -1,5 +1,6 @@
 import React from "react";
 import { ContextConsumer } from "../context/ContextProvider";
+import { Link } from "react-router-dom";
 
 class ChildOne extends React.Component {
   constructor(props) {
@@ -22,7 +23,12 @@ class ChildOne extends React.Component {
       this.state.userData && (
         <React.Fragment>
           <p>Something is... {this.props.something ? "true" : "false"}</p>
-          <p>Email: {this.state.userData.name.first}</p>
+          <p>
+            Name:{" "}
+            <Link to={`/uncle/${this.state.userData.name.first}`}>
+              {this.state.userData.name.first}
+            </Link>
+          </p>
           <p>Email: {this.state.userData.email}</p>
         </React.Fragment>
       )
