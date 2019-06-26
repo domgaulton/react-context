@@ -4,15 +4,30 @@ import { ContextConsumer } from "../context/ContextProvider";
 class ChildOne extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userData: null
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.userData !== this.props.userData) {
+      this.setState({
+        userData: this.props.userData
+      });
+    }
   }
 
   render() {
     return (
-      <div>
-        <p>Something is... {this.props.something ? "true" : "false"}</p>
-        <p>{this.props.name}</p>
-      </div>
+      this.state.userData && (
+        <React.Fragment>
+          <p>Something is... {this.props.something ? "true" : "false"}</p>
+          <p>
+            Hello {this.state.userData.name.first}!<br />
+            Email: {this.state.userData.email}
+          </p>
+        </React.Fragment>
+      )
     );
   }
 }
@@ -21,11 +36,11 @@ class ChildOne extends React.Component {
 
 const ChildOneUpdate = props => (
   <ContextConsumer>
-    {({ name }) => (
+    {({ userData }) => (
       <ChildOne
         // remember to spread the existing props otherwise you lose any new ones e.g. 'something' that don't come from the provider
         {...props}
-        name={name}
+        userData={userData}
       />
     )}
   </ContextConsumer>
