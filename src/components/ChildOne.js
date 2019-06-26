@@ -9,8 +9,8 @@ class ChildOne extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.userData !== this.props.userData) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.userData !== this.props.userData) {
       this.setState({
         userData: this.props.userData
       });
@@ -22,17 +22,13 @@ class ChildOne extends React.Component {
       this.state.userData && (
         <React.Fragment>
           <p>Something is... {this.props.something ? "true" : "false"}</p>
-          <p>
-            Hello {this.state.userData.name.first}!<br />
-            Email: {this.state.userData.email}
-          </p>
+          <p>Email: {this.state.userData.name.first}</p>
+          <p>Email: {this.state.userData.email}</p>
         </React.Fragment>
       )
     );
   }
 }
-
-// export default ChildOne;
 
 const ChildOneUpdate = props => (
   <ContextConsumer>
