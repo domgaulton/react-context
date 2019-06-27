@@ -5,11 +5,25 @@ class ContextProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userData: {}
+      userData: null,
+      loggedIn: false,
+      logUserIn: this.logUserIn
     };
   }
 
   componentDidMount() {
+    if (this.state.userData === null) {
+      this.getRandomUser();
+    }
+  }
+
+  logUserIn = () => {
+    this.setState({
+      loggedIn: true
+    });
+  };
+
+  getRandomUser() {
     axios
       .get("https://randomuser.me/api/")
       .then(response => {
@@ -26,7 +40,10 @@ class ContextProvider extends React.Component {
 
   render() {
     return (
-      <Context.Provider value={this.state}>
+      <Context.Provider
+        value={this.state}
+        // value={{ state: this.state, logUserIn: this.logUserIn }}
+      >
         {this.props.children}
       </Context.Provider>
     );
