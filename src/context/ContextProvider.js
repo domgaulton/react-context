@@ -7,7 +7,8 @@ class ContextProvider extends React.Component {
     this.state = {
       userData: null,
       loggedIn: false,
-      logUserIn: this.logUserIn
+      logUserIn: this.logUserIn,
+      loggedInAs: ""
     };
   }
 
@@ -18,8 +19,10 @@ class ContextProvider extends React.Component {
   }
 
   logUserIn = () => {
+    const name = prompt("What is your name?");
     this.setState({
-      loggedIn: true
+      loggedIn: true,
+      loggedInAs: name
     });
   };
 

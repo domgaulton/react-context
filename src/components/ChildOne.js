@@ -12,6 +12,7 @@ class ChildOne extends React.Component {
           <Link to={`/uncle/${this.props.userData.name.first}`}>
             {this.props.userData.name.first}
           </Link>
+          Use this to access uncle!
         </p>
         <p>Email: {this.props.userData.email}</p>
       </React.Fragment>

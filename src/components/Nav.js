@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { ContextConsumer } from "../context/ContextProvider";
 
-class Aunt extends React.Component {
+class Nav extends React.Component {
   render() {
     return (
       <nav>
@@ -12,19 +13,27 @@ class Aunt extends React.Component {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="active" to="/uncle">
-              Uncle
-            </NavLink>
-          </li>
-          <li>
             <NavLink activeClassName="active" to="/aunt">
               Aunt
             </NavLink>
           </li>
+          {this.props.loggedInAs === "Dom" && (
+            <li>
+              <NavLink activeClassName="active" to="/aunt">
+                Secrets!
+              </NavLink>
+            </li>
+          )}
         </ul>
       </nav>
     );
   }
 }
 
-export default Aunt;
+const NavUpdate = props => (
+  <ContextConsumer>
+    {({ loggedInAs }) => <Nav {...props} loggedInAs={loggedInAs} />}
+  </ContextConsumer>
+);
+
+export default NavUpdate;
