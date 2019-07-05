@@ -1,0 +1,27 @@
+.input-field {
+  clear: left;
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+.input-field label {
+  clear: left;
+  display: block;
+}
+
+.input-field input {
+  clear: left;
+  font-size: 2em;
+}
+
+.invalid input {
+  border: 3px solid red;
+}
+
+.valid input {
+  border: 3px solid green;
+}
+
+.submit {
+  margin-left: 200px;
+}
