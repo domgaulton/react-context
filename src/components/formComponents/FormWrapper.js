@@ -16,6 +16,7 @@ class FormWrapper extends React.Component {
   }
 
   handleFormChange(event) {
+    console.log(event);
     const name = inputValueToState(event).name;
     const value = inputValueToState(event).value;
     this.setState({

@@ -13,8 +13,25 @@ class Input extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.valid !== prevProps.valid) {
+      this.setValidFromProps();
+    }
+  }
+
   handleInputChange(event) {
     this.setState({ valid: event.target.validity.valid });
+  }
+
+  setValidFromProps() {
+    if (this.props.valid) {
+      this.setState({
+        legacyValid: true
+      });
+    }
+    this.setState({
+      valid: this.props.valid
+    });
   }
 
   wrapperClass(id) {

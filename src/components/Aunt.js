@@ -1,21 +1,38 @@
 import React from "react";
 import Input from "./formComponents/Input";
 import FormWrapper from "./formComponents/FormWrapper";
+import FieldsMatch from "./formComponents/FieldsMatch";
 
 class Aunt extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      fieldValues: {}
+    };
   }
 
-  returnFormData(data) {
-    console.log(data);
-  }
+  handleReturnFormData = data => {
+    this.setState({
+      fieldValues: {
+        ...this.state.fieldValues,
+        [data.name]: data.value
+      }
+    });
+  };
+
+  handleReturnMatchingField = (type, value) => {
+    this.setState({
+      fieldValues: {
+        ...this.state.fieldValues,
+        [type]: value
+      }
+    });
+  };
 
   render() {
     return (
       <React.Fragment>
-        <FormWrapper returnFormData={this.returnFormData}>
+        <FormWrapper returnFormData={this.handleReturnFormData}>
           <Input
             id="input"
             type="text"
@@ -33,6 +50,15 @@ class Aunt extends React.Component {
             placeholder="Enter text"
             pattern=".{3,}"
             required={true}
+          />
+          <FieldsMatch
+            type="password"
+            name="password"
+            label="Password"
+            placeholder="Please enter a new password"
+            pattern=".{3,}"
+            required={true}
+            returnMatchingField={this.handleReturnMatchingField}
           />
         </FormWrapper>
       </React.Fragment>
