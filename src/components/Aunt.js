@@ -57,7 +57,6 @@ class Aunt extends React.Component {
             label="Password"
             placeholder="Please enter a new password"
             pattern=".{3,}"
-            required={true}
             returnMatchingField={this.handleReturnMatchingField}
           />
         </FormWrapper>

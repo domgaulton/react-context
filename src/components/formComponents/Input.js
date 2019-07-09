@@ -20,7 +20,9 @@ class Input extends Component {
   }
 
   handleInputChange(event) {
-    this.setState({ valid: event.target.validity.valid });
+    if (!this.props.valid && this.props.valid !== false) {
+      this.setState({ valid: event.target.validity.valid });
+    }
   }
 
   setValidFromProps() {
@@ -63,6 +65,7 @@ class Input extends Component {
           onChange={this.handleInputChange}
           pattern={this.props.pattern}
           required={this.props.required}
+          valid={this.props.valid}
         />
       </div>
     );
