@@ -29,10 +29,17 @@ class Aunt extends React.Component {
     });
   };
 
+  additionalValidation = input => {
+    this.setState.additionalValidation(input);
+  };
+
   render() {
     return (
       <React.Fragment>
-        <FormWrapper returnFormData={this.handleReturnFormData}>
+        <FormWrapper
+          returnFormData={this.handleReturnFormData}
+          additionalValidation={false}
+        >
           <Input
             id="input"
             type="text"
@@ -58,6 +65,7 @@ class Aunt extends React.Component {
             placeholder="Please enter a new password"
             pattern=".{3,}"
             returnMatchingField={this.handleReturnMatchingField}
+            matching={this.additionalValidation}
           />
         </FormWrapper>
       </React.Fragment>

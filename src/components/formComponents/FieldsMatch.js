@@ -18,6 +18,7 @@ class FieldsMatch extends Component {
     if (this.newField.current.state.valid) {
       if (this.form.current[0].value !== this.form.current[1].value) {
         this.setState({ fieldsMatch: false });
+        this.props.matching(false);
         return false;
       } else {
         this.setState({
@@ -28,10 +29,13 @@ class FieldsMatch extends Component {
           this.props.type,
           this.state.fields.newField
         );
+        this.props.matching(true);
         return true;
       }
     } else {
       this.setState({ fieldsMatch: false });
+      this.props.matching(false);
+      return false;
     }
   }
 

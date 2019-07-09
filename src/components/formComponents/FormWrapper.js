@@ -7,7 +7,8 @@ class FormWrapper extends React.Component {
     super(props);
     this.state = {
       submitBtnActive: false,
-      formValues: {}
+      formValues: {},
+      additionalValidation: true
     };
 
     this.form = React.createRef();
@@ -15,7 +16,14 @@ class FormWrapper extends React.Component {
     this.handleFormChange = this.handleFormChange.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.additionalValidation !== prevProps.additionalValidation) {
+      this.setState({ additionalValidation: this.props.additionalValidation });
+    }
+  }
+
   handleFormChange(event) {
+    console.log(this.props.additionalValidation);
     const name = inputValueToState(event).name;
     const value = inputValueToState(event).value;
     this.setState({
@@ -42,6 +50,7 @@ class FormWrapper extends React.Component {
           onChange={event => this.handleFormChange(event)}
         >
           {this.props.children}
+
           <input
             className="submit"
             type="submit"

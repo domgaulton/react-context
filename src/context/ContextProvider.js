@@ -6,7 +6,7 @@ class ContextProvider extends React.Component {
     super(props);
     this.state = {
       userData: null,
-      loggedIn: false,
+      loggedIn: true,
       logUserIn: this.logUserIn,
       loggedInAs: ""
     };
